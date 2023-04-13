@@ -2,17 +2,17 @@ import pyautogui
 import time
 import re
 
-loadingImg = 'Images\\BLANK_COINBASE.png'
-page1 = 'Images\\0_PAGE1.png'
-page2 = 'Images\\0_PAGE2.png'
-page3 = 'Images\\0_PAGE3.png'
+loadingImg = '2022_Images\\0_LOAD.png'
 
-fixImg = 'Images\\1_FIX.png'
-otherImg = 'Images\\2_OTHER.png'
-blankImg = 'Images\\3_BLANK.png'
-variousImg = 'Images\\4_VARIOUS.png'
-continueImg = 'Images\\5_CONTINUE.png'
-noneImg = 'Images\\6_NONE.png'
+reviewImg = '2022_Images\\1_REVIEW.png'
+otherImg = '2022_Images\\2_OTHER.png'
+blankImg = '2022_Images\\3_BLANK.png'
+variousImg = '2022_Images\\4_VARIOUS.png'
+continueImg = '2022_Images\\5_CONTINUE.png'
+noneImg = '2022_Images\\6_NONE.png'
+
+page1Img = '2022_Images\\9_PAGE_1.png'
+page3Img = '2022_Images\\9_PAGE_3.png'
 
 
 defaultWaitTimeSecs = 15
@@ -31,10 +31,10 @@ def wait(x):
 def waitToLoad():
     defaultLoc()
     try:
-        coinbase_x,coinbase_y=pyautogui.locateCenterOnScreen(loadingImg,grayscale=True,confidence=0.7)
-        if coinbase_x > 0:
+        loading_x,loading_x=pyautogui.locateCenterOnScreen(loadingImg,grayscale=True,confidence=0.7)
+        if loading_x > 0:
             try:
-                page3_x,page3_y=pyautogui.locateCenterOnScreen(page3,grayscale=True,confidence=0.7)
+                page3_x,page3_y=pyautogui.locateCenterOnScreen(page3Img,grayscale=True,confidence=0.7)
                 if page3_x > 0:
                     print("We are on page 3!")
                     return
@@ -63,7 +63,7 @@ def scroll(Pixels):
 def sequence():
     defaultLoc()
     # page 1
-    clickFromLocation(fixImg)
+    clickFromLocation(reviewImg)
     wait(2)
     waitToLoad()
     # page 2
@@ -84,7 +84,7 @@ def sequence():
     waitToLoad()
 
 counter = 0
-while counter < 4:
+while counter < 35:
     counter+=1
     print("Error #" + str(counter))
     sequence()
